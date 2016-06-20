@@ -1,10 +1,3 @@
-/*
- * main.c
- *
- *  Created on: 13 juin 2016
- *      Author: postaron
- */
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #define F_CPU 16000000UL
