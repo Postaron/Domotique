@@ -10,6 +10,7 @@
 #define F_CPU 16000000UL
 #define SCL 100000UL
 #define LCD_ADDRESS 0x20
+#define RFID_ADDRESS 0x48
 #define BUTTON_UP 0x08
 #define BUTTON_DOWN 0x04
 #define BUTTON_LEFT 0x10
