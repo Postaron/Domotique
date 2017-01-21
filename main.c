@@ -1,6 +1,4 @@
-/*
- * Sorry for my poor English (LOL)
- */
+// Sorry for my poor English (LOL)
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -18,7 +16,8 @@
 ISR(TWI_vect) { //CPU jumps here when TWINT = 0
 	uint8_t status = TWSR & (~0x7);
 	if (status != 0x08 || status != 0x18 || status != 0x28 || status != 0x30) {
-		/* Normally check if there is no error.
+		/*
+		 * Normally check if there is no error.
 		 * Normally doing a sort of routine but I did not decide what to do yet.
 		 * So I'm screwed xD
 		 */
@@ -28,6 +27,7 @@ ISR(TWI_vect) { //CPU jumps here when TWINT = 0
 }
 
 void twi_init(void) {
+	DDRC &= ~((1 << PC5) | (1 << PC4)); //force it to be an input
 	PORTC |= (1 << PC5) | (1 << PC4); //internal pull-up activated
 	TWBR = ((F_CPU / SCL) - 16) / 2; //clock frequency
 	TWCR |= (1 << TWIE) | (1 << TWEN) | (1 << TWEA) | (1 << TWINT);
@@ -77,7 +77,8 @@ void twi_stop(void) { //stops communication but not I2C function on the two pins
 }
 
 int main(void) {
-	/* To use the LCD, you have to ask him (address) something,
+	/*
+	 * To use the LCD, you have to ask him (address) something,
 	 * so a command and then you can read or write to thing
 	 * you wanted to change
 	 */
